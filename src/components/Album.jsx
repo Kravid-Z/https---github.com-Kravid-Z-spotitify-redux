@@ -73,9 +73,8 @@ class Album extends React.Component {
           <div className="col-md-8 p-5">
             <Row>
               <div className="col-md-10 mb-5" id="trackList">
-                {this.props.searchReducer.searchResults.tracks.data.map((song) => (
-                  <Song track={song} key={song.id} />
-                ))}
+                {this.props.searchReducer.searchResults.tracks &&
+                  this.props.searchReducer.searchResults.tracks.data.map((song) => <Song track={song} key={song.id} />)}
               </div>
             </Row>
           </div>
