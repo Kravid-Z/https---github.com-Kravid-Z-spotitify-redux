@@ -1,13 +1,8 @@
-import {
-  FETCH_USER_SEARCH,
-  FETCH_USER_SUCCESS,
-  FETCH_USER_FAILURE,
-  FETCH_USER_NO_RESULTS
-} from "../actionTypes.js";
+import { FETCH_USER_SEARCH, FETCH_USER_SUCCESS, FETCH_USER_FAILURE, FETCH_USER_NO_RESULTS, FETCH_ALBUM } from "../actionTypes.js";
 
 const initialState = {
   loading: false,
-  results: [],
+  searchResults: [],
   error: "",
   mssg: "",
 };
@@ -24,7 +19,7 @@ const searchReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        results: action.payload,
+        searchResults: action.payload,
         error: "",
         mssg: "success",
       };
@@ -33,7 +28,7 @@ const searchReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        results: [],
+        searchResults: [],
         error: "",
         mssg: action.payload,
       };
@@ -42,8 +37,17 @@ const searchReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        results: [],
+        searchResults: [],
         error: action.payload,
+      };
+    }
+    case FETCH_ALBUM: {
+      return {
+        ...state,
+        loading: false,
+        searchResults: action.payload,
+        error: "",
+        mssg: "success",
       };
     }
     default:
